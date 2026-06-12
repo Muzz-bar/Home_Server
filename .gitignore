@@ -1,0 +1,14 @@
+# Abaikan semua folder data biner hasil generate Docker di sub-folder mana pun
+**/data/
+**/state/
+**/postgres_data/
+**/nextcloud_data/
+
+# Abaikan semua file password/kredensial lokal
+.env
+*.env
+.env.*
+
+# Abaikan file sampah sistem OS
+.DS_Store
+Thumbs.db
