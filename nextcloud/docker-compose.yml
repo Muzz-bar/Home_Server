@@ -13,7 +13,7 @@ services:
       - nextcloud_network
 
   nextcloud-app:
-    image: nextcloud:stable-alpine
+    image: nextcloud:29
     container_name: nextcloud_app_container
     restart: unless-stopped
     ports:
