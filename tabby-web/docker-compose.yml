@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  tabby-web:
+    image: ghcr.io/eugeny/tabby-web:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - tabby-data:/app/data
+    restart: always
+
+volumes:
+  tabby-data:
