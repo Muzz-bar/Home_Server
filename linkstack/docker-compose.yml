@@ -1,0 +1,9 @@
+services:
+  linkstack:
+    image: linkstackorg/linkstack:latest
+    container_name: linkstack_app
+    ports:
+      - "8190:80"
+    volumes:
+      - ./linkstack_data:/htdocs
+    restart: unless-stopped
