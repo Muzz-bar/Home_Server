@@ -1,13 +1,21 @@
-version: '3.8'
-
 services:
-  tabby-web:
-    image: ghcr.io/eugeny/tabby-web:latest
-    ports:
-      - "8000:8000"
-    volumes:
-      - tabby-data:/app/data
+  nextcloud-db:
+    image: mariadb:10.11
+    container_name: nextcloud_db
+    # ... (setelan database lu yang sudah ada) ...
+
+  nextcloud-redis:
+    image: redis:alpine
+    container_name: nextcloud_redis
     restart: always
 
-volumes:
-  tabby-data:
+  nextcloud-app:
+    image: nextcloud:latest
+    container_name: nextcloud_app
+    # --- SUNTIKKAN REDIS KE ENVIRONMENT NEXTCLOUD ---
+    environment:
+      - REDIS_HOST=nextcloud-redis
+    depends_on:
+      - nextcloud-db
+      - nextcloud-redis
+    # ... (setelan ports dan volumes lu yang sudah ada) ...
