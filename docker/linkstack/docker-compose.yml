@@ -5,5 +5,5 @@ services:
     ports:
       - "8190:80"
     volumes:
-      - ./linkstack_data:/htdocs
+      - ../../app-storages/linkstack/linkstack_data:/htdocs
     restart: unless-stopped

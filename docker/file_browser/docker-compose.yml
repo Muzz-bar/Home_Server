@@ -6,6 +6,6 @@ services:
       - "8082:80"
     volumes:
       - /home/muzz/my_serverku:/srv         # Mengarahkan FileBrowser untuk bisa melihat seluruh folder server lu
-      - ./filebrowser.db:/database/filebrowser.db
-      - ./config.json:/config/config.json
+      - ../../app-storages/file_browser/filebrowser.db:/database/filebrowser.db
+      - ../../app-storages/file_browser/config.json:/config/config.json
     restart: unless-stopped

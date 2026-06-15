@@ -1,0 +1,67 @@
+services:
+  nextcloud-db:
+    image: postgres:15-alpine
+    container_name: nextcloud_db_container
+    restart: unless-stopped
+    volumes:
+      - ../../app-storages/nextcloud/postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=nextcloud_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD} # Membaca dari file .env
+    networks:
+      - nextcloud_network
+
+  nextcloud-redis:
+    image: redis:alpine
+    container_name: nextcloud_redis_container
+    restart: unless-stopped
+    command: redis-server --save "" --appendonly no # In-memory cache tanpa disk persistence untuk efisiensi RAM/CPU
+    networks:
+      - nextcloud_network
+
+  nextcloud-app:
+    image: nextcloud:29
+    container_name: nextcloud_app_container
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+    volumes:
+      - ../../app-storages/nextcloud/nextcloud_data:/var/www/html
+    environment:
+      - POSTGRES_HOST=nextcloud-db
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=nextcloud_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD} # Membaca dari file .env
+      - REDIS_HOST=nextcloud-redis
+      - PHP_MEMORY_LIMIT=512M
+    networks:
+      - nextcloud_network
+    depends_on:
+      - nextcloud-db
+      - nextcloud-redis
+
+  nextcloud-cron:
+    image: nextcloud:29
+    container_name: nextcloud_cron_container
+    restart: unless-stopped
+    volumes:
+      - ../../app-storages/nextcloud/nextcloud_data:/var/www/html
+    environment:
+      - POSTGRES_HOST=nextcloud-db
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=nextcloud_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - REDIS_HOST=nextcloud-redis
+    entrypoint: /cron.sh
+    networks:
+      - nextcloud_network
+    depends_on:
+      - nextcloud-db
+      - nextcloud-redis
+
+networks:
+  nextcloud_network:
+    driver: bridge
+
+
