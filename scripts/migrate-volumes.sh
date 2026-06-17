@@ -129,9 +129,9 @@ for srcRel in "${!maps[@]}"; do
 done
 
 echo
-printf "Migration summary:\n"
+printf 'Migration summary:\n'
 for item in "${summary[@]}"; do
-  printf "- %s\n" "$item"
+  printf '%s\n' "- $item"
 done
 
 echo
