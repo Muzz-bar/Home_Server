@@ -12,4 +12,4 @@ services:
       - ../../app-storages/stirling/trainingData:/usr/share/tessdata # Tempat menyimpan data kecerdasan bahasa untuk OCR
       - ../../app-storages/stirling/extraConfigs:/configs
       - ../../app-storages/stirling/logs:/logs
-    restart: unless-stopped
+    restart: always

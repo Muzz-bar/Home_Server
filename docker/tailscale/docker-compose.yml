@@ -12,4 +12,4 @@ services:
       - NET_ADMIN
       - NET_RAW
     network_mode: "host"
-    restart: unless-stopped
+    restart: always

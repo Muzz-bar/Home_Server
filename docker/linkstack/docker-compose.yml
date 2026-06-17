@@ -6,4 +6,4 @@ services:
       - "8190:80"
     volumes:
       - ../../app-storages/linkstack/linkstack_data:/htdocs
-    restart: unless-stopped
+    restart: always

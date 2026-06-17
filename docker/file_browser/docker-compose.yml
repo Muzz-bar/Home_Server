@@ -8,4 +8,4 @@ services:
       - /home/muzz/my_serverku:/srv         # Mengarahkan FileBrowser untuk bisa melihat seluruh folder server lu
       - ../../app-storages/file_browser/filebrowser.db:/database/filebrowser.db
       - ../../app-storages/file_browser/config.json:/config/config.json
-    restart: unless-stopped
+    restart: always

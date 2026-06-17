@@ -2,7 +2,7 @@ services:
   nextcloud-db:
     image: postgres:15-alpine
     container_name: nextcloud_db_container
-    restart: unless-stopped
+    restart: always
     volumes:
       - ../../app-storages/nextcloud/postgres_data:/var/lib/postgresql/data
     environment:
@@ -15,7 +15,7 @@ services:
   nextcloud-redis:
     image: redis:alpine
     container_name: nextcloud_redis_container
-    restart: unless-stopped
+    restart: always
     command: redis-server --save "" --appendonly no # In-memory cache tanpa disk persistence untuk efisiensi RAM/CPU
     networks:
       - nextcloud_network
@@ -23,7 +23,7 @@ services:
   nextcloud-app:
     image: nextcloud:29
     container_name: nextcloud_app_container
-    restart: unless-stopped
+    restart: always
     ports:
       - "8085:80"
     volumes:
@@ -44,7 +44,7 @@ services:
   nextcloud-cron:
     image: nextcloud:29
     container_name: nextcloud_cron_container
-    restart: unless-stopped
+    restart: always
     volumes:
       - ../../app-storages/nextcloud/nextcloud_data:/var/www/html
     environment:
