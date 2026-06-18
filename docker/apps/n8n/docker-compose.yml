@@ -12,7 +12,9 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - NODE_ENV=production
+      - N8N_ENCRYPTION_KEY=freakynigueer123 # <--- Tambah ini biar key-nya gak generate acak tiap restart
+      - N8N_USER_FOLDER=/data # <--- PAKSA n8n BACA FOLDER INI SEBAGAI RUMAHNYA
       - WEBHOOK_URL=https://n8n.barr.my.id/ 
     volumes:
-      - ../../../app-storages/n8n:/home/node/.n8n # <--- Map ke data fisik muzz
+     - ../../../app-storages/n8n:/data # <--- Map ke data fisik muzz
     restart: always
