@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: syncthing_app
+    user: "1001:1001" # <--- Berjalan sebagai muzz agar sinkron dengan FileBrowser
+    ports:
+      - "8384:8384" # Web UI Syncthing
+      - "22000:22000/tcp" # Port transfer data TCP
+      - "22000:22000/udp" # Port transfer data UDP
+    environment:
+      - PUID=1001
+      - PGID=1001
+    volumes:
+      - ../../../app-storages/syncthing/config:/var/syncthing/config # Folder config
+      - ../../../app-storages/syncthing/backup_hp:/var/syncthing/backup_hp # Folder tampungan backup
+    restart: always
