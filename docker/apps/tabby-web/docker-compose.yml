@@ -6,6 +6,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ../../app-storages/tabby-web/data:/app/data
+      - ../../../app-storages/tabby-web/data:/app/data
     restart: always
  
