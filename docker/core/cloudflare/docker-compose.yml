@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  cloudflare_tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflare_tunnel_agent
+    restart: always
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TOKEN}  # <--- DIA OTOMATIS NGINTIP VARIABEL DI FILE .ENV LU
