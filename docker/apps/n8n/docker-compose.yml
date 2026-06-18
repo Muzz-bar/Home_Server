@@ -4,7 +4,7 @@ services:
   n8n:
     image: docker.n8n.io/n8nio/n8n:latest
     container_name: n8n_app
-    user: "1000:1000" # <--- Berjalan atas nama muzz biar gak bentrok permission
+    user: "1001:1001" # <--- Berjalan atas nama muzz biar gak bentrok permission
     ports:
       - "5678:5678"
     environment:
