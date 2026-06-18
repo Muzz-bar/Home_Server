@@ -6,7 +6,7 @@ services:
     hostname: acer-server
     environment:
       - TS_USERSPACE=false
-      - TS_AUTHKEY= ${TAILSCALE_AUTHKEY}
+      - TS_AUTHKEY=${TAILSCALE_AUTHKEY}
     volumes:
       - ../../../app-storages/tailscale/state:/var/lib/tailscale
       - /dev/net/tun:/dev/net/tun

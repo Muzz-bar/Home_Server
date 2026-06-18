@@ -7,4 +7,4 @@ services:
     restart: always
     command: tunnel --no-autoupdate run
     environment:
-      - TUNNEL_TOKEN=${CLOUDFLARE_TOKEN}  # <--- DIA OTOMATIS NGINTIP VARIABEL DI FILE .ENV LU
+      - TUNNEL_TOKEN=${CLOUDFLARE_TOKEN}  
