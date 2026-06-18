@@ -3,9 +3,12 @@ version: '3.8'
 services:
   tabby-web:
     image: ghcr.io/eugeny/tabby-web:latest
+    container_name: tabby_app
     ports:
-      - "8000:8000"
+      - "8000:8000" # <--- LUAR: 8000 dikembalikan ke INTERNAL: 8000
+    environment:
+      - DATABASE_URL=sqlite:////app/data/db.sqlite3 # <--- WAJIB! Mengarahkan database ke SQLite internal
+      - PORT=8000 # <--- Menegaskan port internalnya
     volumes:
       - ../../../app-storages/tabby-web/data:/app/data
     restart: always
- 
