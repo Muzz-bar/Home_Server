@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n_app
+    user: "1000:1000" # <--- Berjalan atas nama muzz biar gak bentrok permission
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=192.168.1.24 # <--- Sesuaikan dengan IP Lokal Server lu
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://n8n.barr.my.id/ 
+    volumes:
+      - ../../../app-storages/n8n:/home/node/.n8n # <--- Map ke data fisik muzz
+    restart: always
