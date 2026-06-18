@@ -4,11 +4,41 @@
 **/postgres_data/
 **/nextcloud_data/
 
-# Abaikan semua file password/kredensial lokal
+# ==========================================
+# 1. KUNCI UTAMA: BUMI HANGUS SEMUA ISI APP-STORAGES
+# ==========================================
+# Kita abaikan TOTAL seluruh folder app-storages beserta isinya
+app-storages/
+
+# ==========================================
+# 2. PENGECUALIAN (Kodingan/Template yang BOLEH Masuk Git)
+# ==========================================
+# Jika lu punya file konfigurasi manual/template di app-storages yang WAJIB masuk Git,
+# lu bisa daftarkan pengecualiannya di sini menggunakan tanda seru (!).
+# Contoh:
+# !app-storages/file_browser/settings.json.example
+
+# ==========================================
+# 3. KREDENSIAL & FILE PASSPORT LOKAL (KEBAL GIT CLEAN)
+# ==========================================
 .env
 *.env
 .env.*
+secrets/
+credentials/
 
-# Abaikan file sampah sistem OS
+# ==========================================
+# 4. SAMPAH DOCKER & LOGS
+# ==========================================
+**/*.log
+**/logs/
+dist/
+build/
+
+# ==========================================
+# 5. SAMPAH SISTEM OPERASI
+# ==========================================
 .DS_Store
 Thumbs.db
+.desktop
+.directory
