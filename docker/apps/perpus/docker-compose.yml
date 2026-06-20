@@ -10,7 +10,7 @@ services:
     volumes:
       - ../../../app-storages/kavita/config:/kavita/config
       # Tempat lu naruh file PDF/ePub nyata di server lu:
-      - /home/muzz/my_serverku/backup_hp:/manga
+      - /home/muzz/my_serverku/app-storages/syncthing/backup_hp:/manga
     restart: always
 
   audiobookshelf:
