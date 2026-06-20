@@ -19,10 +19,11 @@ CORE_SERVICES=(
 APP_SERVICES=(
     "$BASE_DIR/docker/apps/file_browser"
     "$BASE_DIR/docker/apps/linkstack"
-    "$BASE_DIR/docker/apps/nextcloud"
+    "$BASE_DIR/docker/apps/n8n"
     "$BASE_DIR/docker/apps/stirling"
     "$BASE_DIR/docker/apps/tabby-web"
     "$BASE_DIR/docker/apps/uptime kuma"
+    "$BASE_DIR/docker/apps/perpus"
 )
 
 case "$1" in
