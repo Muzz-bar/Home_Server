@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  kavita:
+    image: jvmilazz0/kavita:latest
+    container_name: kavita_app
+    user: "1001:1001" 
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../../../app-storages/kavita/config:/kavita/config
+      # Tempat lu naruh file PDF/ePub nyata di server lu:
+      - /home/muzz/my_serverku/backup_hp:/manga
+    restart: always
+
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: audiobookshelf_app
+    user: "1001:1001" 
+    ports:
+      - "13378:80"
+    volumes:
+      - ../../../app-storages/audiobookshelf/config:/config
+      - ../../../app-storages/audiobookshelf/metadata:/metadata
+      # Tempat lu naruh file audio/buku audiobooks:
+      - /home/muzz/my_serverku/backup_hp:/audiobooks
+    restart: always
