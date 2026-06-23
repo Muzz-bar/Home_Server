@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  pingvin-share:
+    image: stonith404/pingvin-share:latest
+    container_name: pingvin_share_app
+    user: "1001:1001" 
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../../app-storages/pingvin-share/data:/opt/app/backend/data
+    restart: always
