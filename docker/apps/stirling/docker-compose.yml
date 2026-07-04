@@ -7,9 +7,11 @@ services:
     environment:
       - DOCKER_ENABLE_SECURITY=false
       - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=true
-      - LANGS=en_GB,id_ID # Menambahkan dukungan OCR Bahasa Inggris dan Bahasa Indonesia
+      - LANGS=en_GB,id_ID
+      - SYSTEM_CORSALLOWEDORIGINS=*
+      # ──────────────────────────────────────────────────
     volumes:
-      - ../../../app-storages/stirling/trainingData:/usr/share/tessdata # Tempat menyimpan data kecerdasan bahasa untuk OCR
+      - ../../../app-storages/stirling/trainingData:/usr/share/tessdata
       - ../../../app-storages/stirling/extraConfigs:/configs
       - ../../../app-storages/stirling/logs:/logs
     restart: always
