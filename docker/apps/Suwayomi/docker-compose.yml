@@ -30,4 +30,4 @@ services:
       resources:
         limits:
           # Kasih batas biar gak nyedot RAM server lu sampai mati
-          memory: 500M
+          memory: 900M
