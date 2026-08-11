@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   suwayomi:
     image: ghcr.io/suwayomi/tachidesk:latest
@@ -13,7 +11,7 @@ services:
     environment:
       - TZ=Asia/Jakarta
       # Mencegah Java Virtual Machine menyedot habis sisa RAM
-      - JAVA_TOOL_OPTIONS="-Xmx512m -Xms256m"
+      - JAVA_TOOL_OPTIONS= -Xmx512m -Xms256m
     restart: unless-stopped
     deploy:
       resources:
