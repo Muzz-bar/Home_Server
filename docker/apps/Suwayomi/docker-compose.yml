@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  suwayomi:
+    image: ghcr.io/suwayomi/tachidesk:latest
+    container_name: suwayomi_server
+    ports:
+      - "4567:4567"
+    volumes:
+      # Sisi Kiri: Mundur 3 folder ke root Home_Server, lalu masuk ke app-storages
+      # Sisi Kanan: Target direktori default milik sistem Suwayomi
+      - ../../../app-storages/suwayomi:/home/suwayomi/.local/share/Tachidesk
+    environment:
+      - TZ=Asia/Jakarta
+      # Mencegah Java Virtual Machine menyedot habis sisa RAM
+      - JAVA_TOOL_OPTIONS="-Xmx512m -Xms256m"
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 700M
