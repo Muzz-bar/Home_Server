@@ -18,8 +18,10 @@ app-storages/
 # ==========================================
 # 3. WORKSPACE / FOLDER PROJEK
 # (Abaikan folder projek jika masing-masing punya Git sendiri)
-# ==========================================
-projek/
+projek/*
+
+# PENGECUALIAN: Jangan abaikan file penanda ini agar foldernya tetap tercatat di Git
+!projek/.gitkeep
 
 # ==========================================
 # 4. KREDENSIAL & FILE SENSITIF
