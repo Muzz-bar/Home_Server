@@ -1,10 +1,16 @@
-docker run -d \
-  --name=jdownloader-2 \
-  -p 5800:5800 \
-  -e PUID=1001 \
-  -e PGID=1001 \
-  -e TZ=Asia/Jakarta \
-  -v ~/jdownloader-config:/config:rw \
-  -v ../../../Drive/Downloads:/downloads:/output:rw \
-  --restart unless-stopped \
-  jlesage/jdownloader-2:latest
+services:
+  jdownloader:
+    image: jlesage/jdownloader-2:latest
+    container_name: jdownloader_app
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Asia/Jakarta
+      - DISPLAY_WIDTH=1366
+      - DISPLAY_HEIGHT=768
+    volumes:
+      - ../../../app-storages/jdownloader/config:/config:rw
+      - ../../../Drive/Downloads:/output:rw
+    ports:
+      - 5800:5800
+    restart: unless-stopped

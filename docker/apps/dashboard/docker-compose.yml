@@ -3,8 +3,8 @@ services:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage_app
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=1001
+      - PGID=1001
       - TZ=Asia/Jakarta
       - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS},localhost:3005
     ports:
