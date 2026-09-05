@@ -6,8 +6,6 @@ services:
       - PUID=1001
       - PGID=1001
       - TZ=Asia/Jakarta
-      - DISPLAY_WIDTH=1366
-      - DISPLAY_HEIGHT=768
     volumes:
       - ../../../app-storages/jdownloader/config:/config:rw
       - ../../../Drive/Downloads:/output:rw
