@@ -1,18 +1,16 @@
 services:
-  qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent_app
+  jdownloader:
+    image: jlesage/jdownloader-2:latest
+    container_name: jdownloader_app
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Jakarta
-      - WEBUI_PORT=8085
-      - TORRENTING_PORT=6881
+      - DISPLAY_WIDTH=1366
+      - DISPLAY_HEIGHT=768
     volumes:
-      - ../../../app-storages/qbittorrent/config:/config
-      - ../../../Drive/Downloads:/downloads
+      - ../../../app-storages/jdownloader/config:/config:rw
+      - ../../../Drive/Downloads:/output:rw
     ports:
-      - 8085:8085
-      - 6881:6881
-      - 6881:6881/udp
+      - 5800:5800
     restart: unless-stopped
