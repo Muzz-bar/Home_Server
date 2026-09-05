@@ -6,7 +6,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Jakarta
-      - HOMEPAGE_ALLOWED_HOSTS=dashboard.barr.web.id,localhost:3005
+      - HOMEPAGE_ALLOWED_HOSTS=${HOMEPAGE_ALLOWED_HOSTS},localhost:3005
     ports:
       - 3005:3000
     volumes:

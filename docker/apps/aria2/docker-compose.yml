@@ -1,0 +1,26 @@
+services:
+  aria2:
+    image: p3terx/aria2-pro
+    container_name: aria2
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - RPC_SECRET= ${ARIA2_RPC_SECRET}
+      - RPC_PORT=6800
+      - LISTEN_PORT=6888
+      - SPECIAL_MODE=rclone
+    volumes:
+      - ./config:/config
+      - ${DOWNLOAD_PATH}:/downloads
+    ports:
+      - 6800:6800
+      - 6888:6888
+      - 6888:6888/udp
+    restart: unless-stopped
+
+  ariang:
+    image: p3terx/ariang
+    container_name: ariang
+    ports:
+      - 6880:6880
+    restart: unless-stopped
