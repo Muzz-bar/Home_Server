@@ -1,8 +1,15 @@
 #!/bin/bash
 
 # --- 1. KREDENSIAL BOT TELEGRAM ---
-TOKEN="8832742963:AAFmZgyO1Fx9cMzDcJD4OvjLlCTY1phG9iw"
-CHAT_ID="1520748566"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+if [ -f "$SCRIPT_DIR/.env" ]; then
+    . "$SCRIPT_DIR/.env"
+fi
+: "${TELEGRAM_BOT_TOKEN:?TELEGRAM_BOT_TOKEN belum diisi di scripts/.env}"
+: "${TELEGRAM_CHAT_ID:?TELEGRAM_CHAT_ID belum diisi di scripts/.env}"
+
+TOKEN="$TELEGRAM_BOT_TOKEN"
+CHAT_ID="$TELEGRAM_CHAT_ID"
 
 # --- 2. PENENTUAN TARGET FILE ---
 TANGGAL=$(date '+%Y-%m-%d')
