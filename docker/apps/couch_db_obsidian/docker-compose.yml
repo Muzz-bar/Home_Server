@@ -10,4 +10,4 @@ services:
       - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
     volumes:
       - ../../../app-storages/couch_db_obsidian/data:/opt/couchdb/data
-      - ../../../app-storages/couch_db_obsidian/local.ini:/opt/couchdb/etc/local.ini
+      - ../../../app-storages/couch_db_obsidian/etc:/opt/couchdb/etc/local.d
