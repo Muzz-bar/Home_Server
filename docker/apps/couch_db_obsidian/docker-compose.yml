@@ -6,8 +6,8 @@ services:
     ports:
       - "5984:5984"
     environment:
-      - COUCHDB_USER=${COUCHDB_USER}  
-      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}  
+      - COUCHDB_USER=${COUCHDB_USER}
+      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
     volumes:
-      - ./couchdb/data:/opt/couchdb/data
-      - ./couchdb/local.ini:/opt/couchdb/etc/local.ini
+      - ../../../app-storages/couch_db_obsidian/data:/opt/couchdb/data
+      - ../../../app-storages/couch_db_obsidian/local.ini:/opt/couchdb/etc/local.ini
